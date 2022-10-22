@@ -1,0 +1,35 @@
+<script>
+import { getVerifyCode,getToken }from '@/ api/account ';
+ import md5 from 'js -md5 ' ;
+export default i
+data () i
+return i
+img: i url: '', isLoading: false }.
+from: { userName : "", password: "", verifyCode: "", isRemember:
+false, isLoading: false }.
+rules : {
+userName : [
+{ required: true, message: ‘请输入登录名',trigger:
+'blur ' },
+],
+password: [{ required: true,message: '请输入密码',trigger:
+'blur ' }],
+verifyCode: [{ required: true, message: '请输入验证码'，
+trigger: 'blur'’}]，
+}
+}
+}，
+created () i
+this.getverifyCode();
+this.getCookie();
+setCookie ( userName,password， exdays ) i
+var exdate = new Date( );
+exdate.setTime(exdate.getTime( ) + 24 * 60 * 60 * 1000 * exdays)//
+保存的天数
+window.document.cookie = 'userName ' + '=' + userName +
+' ; path=/ ;expires=' + exdate.toGMTString()
+window.document.cookie = 'password' + '=' + password +
+' ; path=/ ; expires=' + exdate.toGMTString()
+import request from '@/ plugins/ axios ';
+const area = 'Authorize/ ';
+export const getverifyCode = () => request.getImg(area + 'GetverifyCode ');4export const getToken = (data) => request.post(area + 'Token ' , data);
