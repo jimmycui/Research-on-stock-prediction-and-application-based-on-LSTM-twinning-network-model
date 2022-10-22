@@ -1,0 +1,201 @@
+<template>
+<el-dialog title="新增用户" width="35%” v-model="isShow" @open="resetForm( 'from ' )">
+〈el-form :model="from" ref "from" status-icon size "small" :rules "rules" label-width "sepx" class 
+<el-row>
+<el-col : span="12">
+<el-form-item label=“登录名”prop="logincode" >
+<el-input v-model="from.logincode" placeholder=""请输入登录名" clearable></el-input>
+</el-form-item>
+</ el-col>
+<el-col :span="12">
+<el-form-item label="姓名” prop="name" >
+<el-input v-model="from .name" placeholder="请输入姓名" clearable></el-input>
+</el-form-item>
+</el-col>
+</e1-row>
+<el-row>
+<el-col : span="24">
+<el-form-item label-"联系方式” prop "telephone">
+<el-input v-model="from.telephone" placeholder="请输入联系方式"clearable></el-input>
+< / el-form-item>
+</ el-col>
+</el-raw>
+<el-row>
+<el-col :span=""12">
+<ei-form-item label="邮箱地址”prop="email">
+<el-input v-model="from.email" placeholder="请输入邮箱地址"clearable</el-input>
+</el-form-item>
+</ el-col>
+<el-col :span=""12">
+<el-form-item label=“居住地址" prop="address ">
+<el-input v-model="from.address" placeholder="请输入居住地址" clearable>x</el-input>
+</el-form-item>
+</el-col>
+</el-row>
+<el-row>
+<el-col : span="12">
+<el-form-item label="密码" prop "pass" >
+<el-input :type="inputType” @focus="changeInputType"v-model="from.pass" placeholder="请输入密码"
+clearable></e1-input>
+</el-form-item>
+</el-col>
+<el-col : span="12">
+<el-form-item label="确认密码”prop="pass1">
+<el-input :type="inputType”@focus="changeInputType" v-model="from.pass1" placeholder="请再次输入密码"
+clearable></el-input>
+</el-form-item>
+</el-col>
+</e1-row>
+<el-form-item label=“备注">
+el-input type "textarea” maxlength "30” show-word-limit autosize placeholder"请输入内容”v-model "from.remarks">
+</el-input>
+</el-form-item>/el-form>
+<template ffooter>
+cel-button type="primary" @click-"submit(from)">提交</el-button>
+</template>
+/el-dialog> </template>
+
+return {
+isShow: false,
+inputType : 'text ',from: {}，
+rules: {
+loginCode: [{ required: true,message:‘请输入登录名
+', trigger: blur’}]
+name: [{ required: true，message: ‘请输入姓名', trigger: 'blur' }],pass: [{ validator: validatePass,trigger: 'blur' }]，
+pass1: [{ validator: validatePass2, trigger: 'blur’}]，telephone: [{ validator: checkTelephone，trigger: 'blur’ }],email: [{ validator: checkEmail, trigger: 'blur’}]，
+address: [{ required: true，message:‘请输入居住地址
+' , trigger: 'blur’}]，
+}
+
+var validatePass2 = (rule, value, cal1back ) => {
+if ( value === '') i
+callback(new Error('请再次输入密码'));
+}else if ( value !== this.from.pass) {
+callback(new Error('两次输入密码不一致!'));
+}else i
+callback();
+};
+
+var checkTelephone = (rule, value, cal1back) => {
+if ( ! value ) i
+return cal1back( new Error('手机号不能为空'));
+}else i
+const reg = l^1[314l5l7|8][e-9]\d{8}$/ ;
+if (reg.test( value)) {
+cailback();
+}else {
+return cal1back( new Error('请输入正确的手机号'));
+}
+};
+
+var che ckEmail = (rule, value, callback) => {i
+if ( ! value ) {
+return cal1back( new Error('邮箱地址不能为空'));
+}else i
+const reg = /^([a-zA-Z0-9_-])+@([a-zA-Zo-9_-])+((.[ a-zA-Z0-
+9_-]{2,3}){1,2})$/;
+if (reg.test( value)) {
+cal1back();
+}e1se i
+return cal1back( new Error('请输入正确的邮箱地址'));
+
+i <terplate>
+'<el-dialog title=“修改用户"” width="35%”v-model=isShow"">
+el-form :model= "fran”ref= "franm"status-icon :rules "rules" size "smal1" labal-width- "80px"class "deno-ruleFormt'>
+<el -row>
+<el-col :span="12"">
+cel-form-iten label=“登录名”prop-"logincode">
+<el-input v-modelm"fram.logincode" placeholderm"请输入登录名" clearable</el-input>
+<lel-form-iterbi el-ol>
+el-col :span="12">
+el-form-iten label="姓名" prop="name">
+cel-input v-model="from.name" placeholder="请输入姓名" clearable</el-input>
+/el-form-iterm
+/el-col>
+/el-row>
+el-row>
+cel -col :span="24">
+cel-form-iten label="联系方式” prop="telephone">
+el-input v-model="fram.telephone" placeholder=“请输入联系方式" clearablex/el-input>
+<lel-form-item>
+fel-col>
+/el-row>
+<el-row>
+el-eol :span-"12">
+el-for-m-iten label=""邮箱地址" prop="enail">
+el-input v-model="from.email" placeholder="请输入邮箱地址"clearable</el-input>/el -form-item>
+/el-col>
+el -col :span=""12">
+<el-form-iten label="居住地址" prop="address">
+<el-input v-model="frcm.address" placeholder="请输入居住地址"clearablex</el-input>
+ie1 -form-item>
+iel-col>
+/el-row>
+<el-forrn-iten label“备注">
+el-input type "textarea" maxlength "3 2" show-ward-limit autosize placeholder "请输入内容" v-model."fram.remarks">
+lel-input>
+/el-form-item>
+</el-form>
+tenplate #footer>
+kel-button type="primary" @click="submit( fran)">提交</el-buttan>
+<itemnplate>
+<iel-dialog></template>
+
+return i
+isShow: false,
+from: io,
+rules: i
+logincode: [{ required: true, message: '请输入登录名' , trigger: 'blur'}],
+name: [{ required: true,message: ‘请输入姓名' , trigger: 'blur'}]，
+telephone: [{ validator: checkTelephone，trigger: 'blur' }],
+email: [{ validator: checkEmail, trigger: 'blur’ }],
+address: [{ required: true, message:‘请输入居住地址', trigger: 'blur'}],
+
+async del ( id) i
+await this.$confirm('确定要删除这条记录吗?'，‘提示'，{
+distinguishcance1AndC1ose : true,
+confirmButtonText: ‘确定',
+cance1ButtonText: ‘取消‘
+}).then(async () => i
+await _api.delAsync(id).then(( result) => {
+this.$message.success(result.desc);
+this.getData(this.searchData);
+}).catch((error) => {
+this.$message.error(error);
+});
+}).catch(action => { });
+import request from '@/ piugins/ axios ';
+ const area = 'User/ ';
+const getDatasAsync = (data) => request.post(area + "GetUsers", data);
+const addAsync = (data) => request.post(area + "Add" , data);
+const editAsync = (data) => request.post(area + "Edit", data);
+const delAsync = (id) => request.post(area + "Delete", { id: id });
+const setRolesAsync = (data) => request.post(area + "SetRoles", data);
+ export default i getDatasAsync,addAsync,
+editAsync,delAsync,setRolesAsync}
+
+{
+path: '/Roles',
+name : '角色列表'，
+component: ( => import(/* webpackChunkName: "system"*/
+'@/ views/ role/Search.vue ' ),
+meta: { title: '角色列表', isShow: true, code: 'JSLB', icon: 'el-icon-
+user-solid' }
+
+import request from '@/ plugins/ axios '; const area = 'Role/ ';
+const getDatasAsync = (data) => request.post(area + "GetRoles", data);
+const addAsync = (data) => request.post(area + "Add" , data);
+ const editAsync = (data) => request.post( area + "Edit", data);
+const delAsync = (id) => request.post(area + "Delete", { id: id });
+ const setPowersAsync = (data) => request.post(area + "SetPowers ", data);
+const getAllPowersAsync = (data) => request.post(area + "GetAllPowers",data) ;
+const getPowersAsync = (data) => request.post(area + "GetPowers ", data);
+export default i
+getDatasAsync,
+addAsync,
+editAsync,
+de lAsync,
+setPowersAs ync,
+getA11PowersAsync,
+getPowersAs ync
+}
